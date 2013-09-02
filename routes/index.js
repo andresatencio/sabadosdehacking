@@ -4,5 +4,5 @@
  */
 
 exports.index = function(req, res){
-  res.render('index', { title: 'Sabados de hacking' });
+  res.render('nyan');
 };
