@@ -1,9 +1,9 @@
 $("#grabar").click(function(){
 	$.ajax({
-		url: '/'+ $("#email").val() +'/tema'
+		url: '/'+ $("#email").text() +'/tema'
         , type: 'POST'
         , cache: false
-        , data: { tema: $("#tema").val() }
+        , data: { tema: $("#tema").text() }
         , complete: function() {
             console.log('process complete');
             },
