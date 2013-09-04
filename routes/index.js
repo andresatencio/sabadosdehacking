@@ -37,7 +37,7 @@ exports.nuevoTema = function (req, res){
 	
 	var temita = new Tema();
 	temita.autor = req.user.nombre;
-	temita.descripcion = req.body.descripcion;
+	temita.descripcion = req.body.tema;
 
 	temita.save(
 		function (err) {
@@ -52,5 +52,11 @@ exports.nuevoTema = function (req, res){
 exports.temas = function (req, res){
 	 console.log(req.body.data);
 	 console.log("req.xhr: " + req.xhr);
-	 res.send(200);
+	 Tema.find({}, function (err, doc){
+	 	if (err){
+	 		res.send(500)
+	 	} else {
+	 		res.json(doc)
+	 	}
+	 })
 }

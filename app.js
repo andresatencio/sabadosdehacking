@@ -40,7 +40,6 @@ app.get('/user/logout', routes.patova, routes.logout);
 app.get('/user/temas', routes.patova, routes.temas);
 app.post('/user/tema', routes.patova, routes.nuevoTema);
 
-app.get('/temas', routes.temas);
 /*
  * Passport login via GitHub
  */

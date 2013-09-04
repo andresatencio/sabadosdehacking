@@ -1,0 +1,18 @@
+$("#grabar").click(function(){
+	$.ajax({
+		url: '/user/tema'
+        , type: 'POST'
+        , cache: false
+        , data: { tema: $("#tema").val() }
+        , complete: function() {
+            console.log('process complete');
+            },
+	        success: function(data) {
+                alert(data);
+                console.log('process sucess');
+              },
+            error: function() {
+            	console.log('process error');
+              },
+        });
+})
