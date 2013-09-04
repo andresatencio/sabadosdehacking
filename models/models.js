@@ -1,9 +1,7 @@
-//Dependencies
 var mongoose = require('mongoose'),
-	Schema = mongoose.Schema;
-	
-//Scheme User
-var schemaUser = {
+	Schema = mongoose.Schema,
+
+esquemaUsuario = {
 	provider: String,
   	uid: String,
   	nombre: String,
@@ -12,29 +10,17 @@ var schemaUser = {
 	email: {type: String, unique: true, trim: true, lowercase: true },
 },
 
-esquemaVendedor = {
-	usuario: {type: String, required: true, trim: true, lowercase: true },
-	pass: {type: String, required: true},
-	empresa: {type: String},
-	nombre: {type: String},
-	apellido: {type: String}
-},
-
-esquemaPedido = {
-	vendedor: {type: String, required: true, trim: true, lowercase: true },
-	empresa: {type: String, required: true, unique: true, trim: true, lowercase: true },
-	productos: [{ descripcion: String, cantidad: Number }],
-	fecha: {type: Date}
+esquemaTema = {
+	autor: String,
+	descripcion: String,
+	votos: [{usuario: String, voto: Number}]
 }
 
 modeloUsuario = Schema(esquemaUsuario),
-modeloVendedor = Schema(esquemaVendedor),
-modeloPedido = Schema(esquemaPedido),
+modeloTema = Schema(esquemaTema),
 
-Usuario = mongoose.model('User', modeloUsuario),
-Vendedor = mongoose.model('Vendedor', modeloVendedor),
-Pedido = mongoose.model('Pedido', modeloPedido),
+Usuario = mongoose.model('Usuario', modeloUsuario),
+Tema = mongoose.model('Tema', modeloTema),
 
 exports.usuario = Usuario,
-exports.vendedor = Vendedor,
-exports.pedido = Pedido;
+exports.tema = Tema;

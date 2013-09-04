@@ -1,8 +1,5 @@
-<<<<<<< HEAD
-ar data = require("./data"),
-=======
+
 var data = require("./data"),
->>>>>>> e4918d8af9e93282dfd8247aa5ffc788bbda28bd
   mongoose = require("mongoose"),
   db = mongoose.connection;
 

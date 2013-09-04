@@ -1,6 +1,7 @@
 var passport = require('passport'), 
     GitHubStrategy = require('passport-github').Strategy;
-    User = require('../models/models')
+    modelos = require('../models/models'),
+    User = modelos.usuario;
 /**
  * Set login con GitHub
  */

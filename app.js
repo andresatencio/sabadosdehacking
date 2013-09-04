@@ -33,9 +33,14 @@ app.configure('development', function(){
   app.use(express.errorHandler());
 });
 
-app.get('/:email', routes.patova, routes.portada);
+app.get('/user/:email', routes.patova, routes.portada);
 app.get('/', routes.index);
-app.get('/:email/logout', routes.patova, routes.logout);
+app.get('/user/logout', routes.patova, routes.logout);
+
+app.get('/user/temas', routes.patova, routes.temas);
+app.post('/user/tema', routes.patova, routes.nuevoTema);
+
+app.get('/temas', routes.temas);
 /*
  * Passport login via GitHub
  */
@@ -45,7 +50,7 @@ app.get('/auth/github/callback', passport.authenticate('github',
   { failureRedirect: '/' }),
         function(req, res) {
           console.log(req.user)
-          res.redirect('/' + req.user.email);
+          res.redirect('/user/' + req.user.email);
         });
 
 http.createServer(app).listen(app.get('port'), function(){
