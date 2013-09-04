@@ -40,7 +40,7 @@ app.get('/:email/logout', routes.patova, routes.logout);
 app.get('/:email/temas', routes.patova, routes.temas);
 app.post('/:email/tema', routes.patova, routes.nuevoTema);
 
-app.post('/tema', routes.nuevoTema);
+//app.post('/tema', routes.nuevoTema);
 
 
 /*
