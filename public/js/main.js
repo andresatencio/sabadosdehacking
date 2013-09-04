@@ -3,7 +3,7 @@ $("#guardar").click(function(){
 		url: '/'+ $("#email").text() +'/tema'
         , type: 'POST'
         , cache: false
-        , data: { tema: $("#tema").val().sanitizeHTML() }
+        , data: { tema: sanitizer.sanitize($("#tema").val()) }
         , complete: function() {
                 //console.log('process complete');
             },
@@ -40,14 +40,32 @@ $(window).ready(function(){
         });
 });
 
-$.fn.sanitizeHTML = function() {
-  var $children = $(this).children();
-  $children.each(function() {
-    if ($(this).not("b").not("i").not("p").not("br").length > 0) {
-      $(this).replaceWith($(this).text());
-    } else {
-      $(this).sanitizeHTML();
-    }
-  });
-  return $(this);
-}
+var sanitizer = {};
+ 
+(function($) {
+  function trimAttributes(node, allowedAttrs) {
+    $.each(node.attributes, function() {
+      var attrName = this.name;
+ 
+      if ($.inArray(attrName, allowedAttrs) == -1) {
+        $(node).removeAttr(attrName)
+      }
+    });
+  }
+ 
+  function sanitize(html, whitelist) {
+    whitelist = whitelist || {'font': ['color'], 'strong': [], 'b': [], 'i': [] };
+    var output = $('<div>'+html+'</div>');
+    output.find('*').each(function() {
+      var allowedAttrs = whitelist[this.nodeName.toLowerCase()];
+      if(!allowedAttrs) {
+        $(this).remove();
+      } else {
+        trimAttributes(this, allowedAttrs);
+      }
+    });
+    return output.html();
+  }
+ 
+  sanitizer.sanitize = sanitize;
+})(jQuery);
