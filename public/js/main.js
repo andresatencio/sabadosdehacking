@@ -17,6 +17,7 @@ $("#guardar").click(function(){
               },
         });
 });
+var sara;
 $(window).ready(function(){
     $.ajax({
         url: '/'+ $("#email").text() +'/temas'
@@ -28,6 +29,7 @@ $(window).ready(function(){
             },
             success: function(data) {
                 console.log(data);
+                sara = data;
               },
             error: function() {
                 console.log('process error');
