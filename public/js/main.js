@@ -29,7 +29,7 @@ $(window).ready(function(){
             },
             success: function(data) {
                 for(d in data){
-                    $(".list-group").append( "<li class='list-group-item'> <span class='label label-warning'>"+ data[d].autor +"</span>"+ data[d].descripcion +"  </li>" )
+                    $(".list-group").append( "<li class='list-group-item'> <span class='label label-warning'>&nbsp"+ data[d].autor +"</span>"+ data[d].descripcion +"  </li>" )
                 }
                 
               },
