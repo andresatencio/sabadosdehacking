@@ -11,6 +11,7 @@ $("#guardar").click(function(){
                 $('#propone').modal('hide');
                 $("#tema").val("");
                 console.log('ok nuevo tema');
+                $(".list-group").append( "<li class='list-group-item'> <span class='label label-warning'>&nbsp"+ data.autor +"</span>"+ data.descripcion +"  </li>" )
               },
             error: function() {
             	console.log('process error');

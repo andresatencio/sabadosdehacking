@@ -44,7 +44,7 @@ exports.nuevoTema = function (req, res){
 			if(err){
 				res.send(500, 'Error');
 			}
-			res.send(200);
+			res.json(temita);
 	});
 
 }
