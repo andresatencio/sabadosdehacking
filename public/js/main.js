@@ -28,8 +28,10 @@ $(window).ready(function(){
                 //console.log('process complete');
             },
             success: function(data) {
-                console.log(data);
-                sara = data;
+                for(d in data){
+                    $(".list-group").append( "<li class='list-group-item'>"+ data[d].descripcion +"</li>" )
+                }
+                
               },
             error: function() {
                 console.log('process error');
