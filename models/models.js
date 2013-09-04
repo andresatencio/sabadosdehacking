@@ -1,23 +1,15 @@
 //Dependencies
 var mongoose = require('mongoose'),
-	Schema = mongoose.Schema,
-	pwd = require('pwd');
+	Schema = mongoose.Schema;
 	
 //Scheme User
-
-
-var mongoose = require('mongoose'),
-	Schema = mongoose.Schema,
-	
-
-esquemaUsuario = {
+var schemaUser = {
 	provider: String,
   	uid: String,
   	nombre: String,
   	image: String,
   	creado: {type: Date, default: Date.now},
 	email: {type: String, unique: true, trim: true, lowercase: true },
-	pass: {type: String}
 },
 
 esquemaVendedor = {

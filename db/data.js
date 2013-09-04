@@ -1,10 +1,9 @@
 var data = {
    db: { native_parser: false },
    server: { poolSize: 2 },
-   user: process.env.sabados,
-   pass: process.env.sabados,
-   uri: process.env.sabados_uri
+   user: "sabados",
+   pass: "sabados",
+   uri: "mongodb://ds043358.mongolab.com:43358/sabados"
 }
 
 module.exports = data;
-

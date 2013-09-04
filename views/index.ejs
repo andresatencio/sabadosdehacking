@@ -1,10 +1,56 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <title>Sabados de Hacking!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
+    <link href="css/style.css" rel="stylesheet" media="screen">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="../../assets/js/html5shiv.js"></script>
+      <script src="../../assets/js/respond.min.js"></script>
+    <![endif]-->
+    <script type="text/javascript">
+    var keywords = ["al pedo", "asi y punto", "para compartir", "para flashar amigo!"];
+    var count = 1;
+    setInterval(function(){    
+        $("span.keyword").fadeOut(500, function(){        
+            $(this).html(keywords[count]);        
+            count++;        
+            if(count == keywords.length)            
+                count = 0;        
+            $(this).fadeIn(500);    
+        });
+    }, 2500);
+    </script>
   </head>
-  <body>
-    <h1><%= title %></h1>
+  <body class="body">
+  <div class="container">
+  <br>
+   <br><br><br>
+  <div class="row">
+    <div class="text-center">
+    <div class="block">
+      <h1 class="text-center"><strong>SABADOS DE HACKING!</strong></h1>
+      <p class="text-center">El "hablemos sin saber" de la programacion.</p>
+      <div class="text-center">
+        <a href="/auth/github" class="btn btn-success">Login con GitHub</a>
+        <br>
+        <br>
+        <span>Esta idea es </span>
+        <span class="keyword label label-danger">mmmm...</span>
+      </div>
+    </div>
+  </div>  
+  <br><br><br><br>
+  </div>
+</div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="//code.jquery.com/jquery.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
   </body>
 </html>
