@@ -9,7 +9,7 @@ var passport = require('passport'),
 passport.use(new GitHubStrategy({
     clientID: "79cbfc62549416fe4ac7",
     clientSecret: "4b7a17099540b856177039ac5b1b4b9b62b5640e",
-    callbackURL: "http://localhost:3000/auth/github/callback"
+    callbackURL: "http://sabadosdehacking.com.ar/auth/github/callback"
   },
   function(token, tokenSecret, profile, done) {
     process.nextTick(function () {
