@@ -1,6 +1,6 @@
 $("#grabar").click(function(){
 	$.ajax({
-		url: '/user/tema'
+		url: '/'+ $("#email").val() +'/tema'
         , type: 'POST'
         , cache: false
         , data: { tema: $("#tema").val() }

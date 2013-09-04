@@ -33,12 +33,12 @@ app.configure('development', function(){
   app.use(express.errorHandler());
 });
 
-app.get('/user/:email', routes.patova, routes.portada);
+app.get('/:email', routes.patova, routes.portada);
 app.get('/', routes.index);
-app.get('/user/logout', routes.patova, routes.logout);
+app.get('/:email/logout', routes.patova, routes.logout);
 
-app.get('/user/temas', routes.patova, routes.temas);
-app.post('/user/tema', routes.patova, routes.nuevoTema);
+app.get('/:email/temas', routes.patova, routes.temas);
+app.post('/:email/tema', routes.patova, routes.nuevoTema);
 
 /*
  * Passport login via GitHub
