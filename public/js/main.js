@@ -3,7 +3,7 @@ $("#guardar").click(function(){
 		url: '/'+ $("#email").text() +'/tema'
         , type: 'POST'
         , cache: false
-        , data: { tema: $("#tema").val() }
+        , data: { tema: $("#tema").val().sanitizeHTML() }
         , complete: function() {
                 //console.log('process complete');
             },
@@ -39,3 +39,15 @@ $(window).ready(function(){
               },
         });
 });
+
+$.fn.sanitizeHTML = function() {
+  var $children = $(this).children();
+  $children.each(function() {
+    if ($(this).not("b").not("i").not("p").not("br").length > 0) {
+      $(this).replaceWith($(this).text());
+    } else {
+      $(this).sanitizeHTML();
+    }
+  });
+  return $(this);
+}
