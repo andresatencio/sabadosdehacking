@@ -17,3 +17,20 @@ $("#guardar").click(function(){
               },
         });
 });
+$(window).ready(function(){
+    $.ajax({
+        url: '/'+ $("#email").text() +'/temas'
+        , type: 'GET'
+        , cache: false
+        , data: {}
+        , complete: function() {
+                //console.log('process complete');
+            },
+            success: function(data) {
+                console.log(data);
+              },
+            error: function() {
+                console.log('process error');
+              },
+        });
+});
