@@ -22,6 +22,7 @@ app.configure(function(){
   app.use(express.bodyParser());
   app.use(express.methodOverride());
   app.use(express.cookieParser('buuu'));
+  app.use(express.session({ secret: 'keyboard cat' }));
   app.use(passport.initialize());
   app.use(passport.session());
   app.use(app.router);
@@ -32,11 +33,9 @@ app.configure('development', function(){
   app.use(express.errorHandler());
 });
 
-app.get('/', function (req, res){
-  res.render('nyan');
-})
-app.get('/github', routes.index);
-app.get('/:email/logout', routes.patova ,routes.logout);
+app.get('/:email', routes.patova, routes.portada);
+app.get('/', routes.index);
+app.get('/:email/logout', routes.patova, routes.logout);
 /*
  * Passport login via GitHub
  */
@@ -45,7 +44,7 @@ app.get('/auth/github', passport.authenticate('github'));
 app.get('/auth/github/callback', passport.authenticate('github', 
   { failureRedirect: '/' }),
         function(req, res) {
-          //res.send(req.user)
+          console.log(req.user)
           res.redirect('/' + req.user.email);
         });
 

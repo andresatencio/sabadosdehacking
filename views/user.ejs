@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sabados de Hacking!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
+    <link href="css/style2.css" rel="stylesheet" media="screen">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="../../assets/js/html5shiv.js"></script>
+      <script src="../../assets/js/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+  <div class="container">
+      <div class="header">
+        <ul class="nav nav-pills pull-right">
+          <li class="active"><a href="#">Temas</a></li>
+          <li><a href=<%= email %>/logout>Logout</a></li>
+        </ul>
+        <h3 class="text-muted">Sabados de Hacking!</h3>
+      </div>
+
+      <div class="jumbotron">
+        <h1>Propone un tema <%= nombre %>!</h1>
+        <p class="lead">Copate chabon y propone un tema, votalo, defendelo, promovelo, etc.</p>
+        <p><a class="btn btn-lg btn-success" href="#">Proponer!</a></p>
+      </div>
+
+      <div class="row marketing">
+        <div class="col-lg-6">
+          <h4>Email</h4>
+          <p><%= email %></p>
+        </div>
+      </div>
+
+      <div class="footer">
+        <p>Sabados de Hacking! 2013</p>
+      </div>
+
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="//code.jquery.com/jquery.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>
