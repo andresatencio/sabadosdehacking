@@ -49,7 +49,7 @@ app.get('/auth/github/callback', passport.authenticate('github',
   { failureRedirect: '/' }),
         function(req, res) {
           console.log(req.user)
-          res.redirect('/user/' + req.user.email);
+          res.redirect('/' + req.user.email);
         });
 
 http.createServer(app).listen(app.get('port'), function(){
