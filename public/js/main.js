@@ -1,12 +1,12 @@
 $("#guardar").click(function(){
-    var tema = $("#tema").val();
+    var t = $("#tema").val();
     if (validar(tema)){
 
         $.ajax({
             url: '/'+ $("#email").text() +'/tema'
             , type: 'POST'
             , cache: false
-            , data: { tema: tema }
+            , data: { tema: t }
             , complete: function() {
                 //console.log('process complete');
             },
