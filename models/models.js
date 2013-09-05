@@ -13,6 +13,7 @@ esquemaUsuario = {
 esquemaTema = {
 	email: String,
 	autor: String,
+	activo: Boolean,
 	descripcion: String,
 	votos: [{usuario: String, voto: Number}]
 }

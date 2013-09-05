@@ -9,7 +9,7 @@ var express = require('express')
   , user = require('./routes/user')
   , http = require('http')
   , path = require('path')
-  , passport = require('./routes/passport')('heroku');
+  , passport = require('./routes/passport')('local');
 
 var app = express();
 
@@ -39,7 +39,7 @@ app.get('/:email/logout', routes.patova, routes.logout);
 
 app.get('/:email/temas', routes.patova, routes.temas);
 app.post('/:email/tema', routes.patova, routes.nuevoTema);
-
+app.post('/:email/eliminar/tema/:id', routes.patova, routes.eliminarTema);
 //app.post('/tema', routes.nuevoTema);
 
 

@@ -1,6 +1,8 @@
 var modelos = require('../models/models'),
 	Usuario = modelos.usuario,
 	Tema = modelos.tema;
+
+var mongoose = require('mongoose');
 /*
  * GET home page.
  */
@@ -44,6 +46,7 @@ exports.nuevoTema = function (req, res){
 		var temita = new Tema();
 		temita.autor = req.user.nombre;
 		temita.email = req.user.email;
+		temita.activo = true;
 		temita.descripcion = req.body.tema;
 
 		temita.save(
@@ -63,14 +66,38 @@ exports.nuevoTema = function (req, res){
 exports.temas = function (req, res){
 	 console.log(req.body.data);
 	 console.log("req.xhr: " + req.xhr);
-	 Tema.find({}, function (err, doc){
+	 Tema.find({activo: true}, function (err, doc){
 	 	if (err){
 	 		res.send(500)
 	 	} else {
 	 		res.json(doc)
 	 	}
 	 })
-}
+};
+
+exports.eliminarTema = function (req, res){
+	var id = mongoose.Types.ObjectId(req.params.id);
+	console.log("req.params.email: " + req.params.email )
+	console.log("req.user.email: " + req.user.email )
+
+	if (req.params.email == req.user.email){
+
+		if (req.body.email == req.user.email){
+			Tema.findByIdAndUpdate(
+				id,
+					{activo: false},
+						function (err, doc){
+							console.log(doc);
+							res.send(doc)
+			});
+		} else {
+			res.send(404);
+		}
+
+	} else {
+		res.send(404);
+	}
+};
 
 var validar = function(txt){
     var txt = txt.toString();
