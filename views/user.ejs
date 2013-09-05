@@ -15,15 +15,22 @@
   </head>
   <body>
   <div class="container">
-      <div class="header">
-        <ul class="nav nav-pills pull-right">
-          <li class="active"><a href="#">Temas</a></li>
-          <li><a href=<%= email %>/logout>Logout</a></li>
-          <li><img src=<%= image %></li>
-        </ul>
-        <h3 class="text-muted">Sabados de Hacking!</h3>
+    <div class="navbar navbar-default">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#"> <img class="resize" src=<%= image %>></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="active"><a href="#">Temas</a></li>
+            <li><a href=<%= email %>/logout>Logout</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
       </div>
-
       <div class="jumbotron">
         <h1>Propone un tema <%= nombre %>!</h1>
         <p class="lead">Copate chabon y propone un tema, votalo, defendelo, promovelo, etc.</p>
@@ -38,8 +45,8 @@
       </div>
 
 
-      <div class="footer" class="text-center">
-        <span id="email" ><%= email %></span>
+      <div class="footer" >
+        <p id="email" class="text-center"><%= email %></p>
         <p class="text-center">Sabados de Hacking 2013.</p>
         <!-- Button trigger modal -->
       </div>
@@ -58,7 +65,7 @@
           <form role="form">
             <div class="form-group">
               <label for="tema">Tema</label>
-              <textarea class="form-control" rows="3" placeholder="Escribite algo al bulto!" id="tema" title="Se necesita un nombre" required></textarea>
+              <input class="form-control" placeholder="Escribite algo al bulto!" id="tema" title="Se necesita un nombre" required>
           </form>
         </div>
         <div class="modal-footer">

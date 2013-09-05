@@ -9,7 +9,7 @@ var express = require('express')
   , user = require('./routes/user')
   , http = require('http')
   , path = require('path')
-  , passport = require('./routes/passport');
+  , passport = require('./routes/passport')('local');
 
 var app = express();
 
