@@ -49,10 +49,11 @@ $(window).ready(function(){
 });
 
 var validar = function(txt){
+    var txt = txt.toString();
     if ( txt == "" ){
         return false;
     } else {
-        var expReg = [a-z]|[A-Z];
+        var expReg = /[a-z]|[A-Z]/;
         return txt.match(expReg);
     }
 }
