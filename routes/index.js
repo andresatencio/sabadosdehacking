@@ -72,7 +72,7 @@ var validar = function(txt){
     if ( txt == "" ){
         return false;
     } else {
-        var expReg = /^[\w]+$/;
+        var expReg = /^[\w ]+$/;
         return expReg.test(txt);
     }
 }
