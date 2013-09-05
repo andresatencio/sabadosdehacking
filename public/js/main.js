@@ -18,12 +18,12 @@ $("#guardar").click(function(){
               },
             error: function() {
                 console.log('process error');
-                $(".form-group")..addClass( "has-error" );
+                $(".form-group").addClass( "has-error" );
               },
         });
 
     } else {
-        $(".form-group")..addClass( "has-error" );
+        $(".form-group").addClass( "has-error" );
     }
 
 });
