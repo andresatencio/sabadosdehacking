@@ -34,19 +34,25 @@ exports.portada = function (req, res){
 };
 
 exports.nuevoTema = function (req, res){
+
+	if(validar(req.body.tema)){
+
+		var temita = new Tema();
+		temita.autor = req.user.nombre;
+		temita.descripcion = req.body.tema;
+
+		temita.save(
+			function (err) {
+				if(err){
+					res.send(500, 'Error');
+				}
+				res.json(temita);
+		});
+	}
+	else {
+		res.send(500, 'Error');
+	}
 	
-	var temita = new Tema();
-	temita.autor = req.user.nombre;
-	temita.descripcion = req.body.tema;
-
-	temita.save(
-		function (err) {
-			if(err){
-				res.send(500, 'Error');
-			}
-			res.json(temita);
-	});
-
 }
 
 exports.temas = function (req, res){
@@ -60,3 +66,13 @@ exports.temas = function (req, res){
 	 	}
 	 })
 }
+
+var validar = function(txt){
+    var txt = txt.toString();
+    if ( txt == "" ){
+        return false;
+    } else {
+        var expReg = /[a-z]|[A-Z]/;
+        return txt.match(expReg);
+    }
+}	
