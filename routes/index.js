@@ -39,7 +39,7 @@ exports.nuevoTema = function (req, res){
 
 		var temita = new Tema();
 		temita.autor = req.user.nombre;
-		temita.descripcion = validar(req.body.tema);
+		temita.descripcion = req.body.tema;
 
 		temita.save(
 			function (err) {

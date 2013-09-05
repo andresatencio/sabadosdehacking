@@ -6,7 +6,7 @@ $("#guardar").click(function(){
             url: '/'+ $("#email").text() +'/tema'
             , type: 'POST'
             , cache: false
-            , data: { tema: validar(tema) }
+            , data: { tema: tema }
             , complete: function() {
                 //console.log('process complete');
             },
