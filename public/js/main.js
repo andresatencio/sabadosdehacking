@@ -1,24 +1,32 @@
 $("#guardar").click(function(){
-	$.ajax({
-		url: '/'+ $("#email").text() +'/tema'
-        , type: 'POST'
-        , cache: false
-        , data: { tema: sanitizer.sanitize($("#tema").val()) }
-        , complete: function() {
+    var tema = $("#tema").val();
+    if (validar(tema)){
+
+        $.ajax({
+            url: '/'+ $("#email").text() +'/tema'
+            , type: 'POST'
+            , cache: false
+            , data: { tema: tema }
+            , complete: function() {
                 //console.log('process complete');
             },
-	        success: function(data) {
+            success: function(data) {
                 $('#propone').modal('hide');
                 $("#tema").val("");
                 console.log('ok nuevo tema');
-                $(".list-group").append( "<li class='list-group-item'> <span class='label label-warning'>&nbsp"+ data.autor +"</span>"+ data.descripcion +"  </li>" )
+                $(".list-group").append( "<li class='list-group-item'> <span class='label label-warning'>"+ data.autor +"</span>&nbsp"+ data.descripcion +"  </li>" )
               },
             error: function() {
-            	console.log('process error');
+                console.log('process error');
               },
         });
+
+    } else {
+        console.log("Errorrrrrrrrrrrrrrrrrrrr");
+    }
+
 });
-var sara;
+
 $(window).ready(function(){
     $.ajax({
         url: '/'+ $("#email").text() +'/temas'
@@ -40,32 +48,11 @@ $(window).ready(function(){
         });
 });
 
-var sanitizer = {};
- 
-(function($) {
-  function trimAttributes(node, allowedAttrs) {
-    $.each(node.attributes, function() {
-      var attrName = this.name;
- 
-      if ($.inArray(attrName, allowedAttrs) == -1) {
-        $(node).removeAttr(attrName)
-      }
-    });
-  }
- 
-  function sanitize(html, whitelist) {
-    whitelist = whitelist || {'font': ['color'], 'strong': [], 'b': [], 'i': [] };
-    var output = $('<div>'+html+'</div>');
-    output.find('*').each(function() {
-      var allowedAttrs = whitelist[this.nodeName.toLowerCase()];
-      if(!allowedAttrs) {
-        $(this).remove();
-      } else {
-        trimAttributes(this, allowedAttrs);
-      }
-    });
-    return output.html();
-  }
- 
-  sanitizer.sanitize = sanitize;
-})(jQuery);
+var validar = function(txt){
+    if ( txt == "" ){
+        return false;
+    } else {
+        var expReg = [a-z]|[A-Z];
+        return txt.match(expReg);
+    }
+}
