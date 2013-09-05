@@ -9,7 +9,7 @@ var express = require('express')
   , user = require('./routes/user')
   , http = require('http')
   , path = require('path')
-  , passport = require('./routes/passport')('local');
+  , passport = require('./routes/passport')('heroku');
 
 var app = express();
 
