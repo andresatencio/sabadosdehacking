@@ -18,11 +18,12 @@ $("#guardar").click(function(){
               },
             error: function() {
                 console.log('process error');
+                $(".form-group")..addClass( "has-error" );
               },
         });
 
     } else {
-        console.log("Errorrrrrrrrrrrrrrrrrrrr");
+        $(".form-group")..addClass( "has-error" );
     }
 
 });
@@ -47,4 +48,13 @@ $(window).ready(function(){
               },
         });
 });
+
+var validar = function(txt){
+    var txt = txt.toString();
+    if ( txt == "" ){
+        return false;
+    } else {
+        var expReg = /[a-z]|[A-Z]|[0-9]/;
+        return txt.match(expReg);
+    }
 

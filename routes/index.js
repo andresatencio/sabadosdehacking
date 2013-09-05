@@ -72,7 +72,7 @@ var validar = function(txt){
     if ( txt == "" ){
         return false;
     } else {
-        var expReg = /[a-z]|[A-Z]/;
+        var expReg = /[a-z]|[A-Z]|[0-9]/;
         return txt.match(expReg);
     }
-}	
+}
