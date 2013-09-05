@@ -57,4 +57,5 @@ var validar = function(txt){
         var expReg = /[a-z]|[A-Z]|[0-9]/;
         return txt.match(expReg);
     }
+}
 
