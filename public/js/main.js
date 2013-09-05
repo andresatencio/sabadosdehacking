@@ -1,5 +1,5 @@
 $("#guardar").click(function(){
-    var tema = $("#tema").text();
+    var tema = $("#tema").val();
     if (validar(tema)){
 
         $.ajax({
