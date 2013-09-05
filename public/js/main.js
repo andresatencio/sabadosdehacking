@@ -1,6 +1,6 @@
 $("#guardar").click(function(){
     var t = $("#tema").val();
-    if (validar(tema)){
+    if (validar(t)){
 
         $.ajax({
             url: '/'+ $("#email").text() +'/tema'
