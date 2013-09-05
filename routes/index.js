@@ -75,6 +75,8 @@ var validar = function(txt){
     var txt = txt.toString();
     if ( txt == "" ){
         return false;
+    } else if (txt.length > 87){
+        return false;
     } else {
         var expReg = /^[\w ]+$/;
         return expReg.test(txt);
