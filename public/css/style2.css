@@ -78,6 +78,7 @@ body {
   }
 }
 img.resize{
+    margin: 8px 8px;
     width:45px; /* you can use % */
     height: auto;
 }
