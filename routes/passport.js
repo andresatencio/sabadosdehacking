@@ -40,7 +40,9 @@ var env = function (enviroment){
           user.email = profile._json.email;
           user.image = profile._json.avatar_url;
           user.save(function(err) {
-            if(err) { throw err; }
+            if(err) { 
+              res.redirect("/"); 
+            }
              done(null, user);
           });
         }
