@@ -36,8 +36,8 @@ var env = function (enviroment){
           var user = new User();
           user.provider = "github";
           user.uid = profile.id;
-          user.nombre = profile.displayName;
-          user.email = profile._json.email;
+          user.nombre = profile.displayName || profile.username || "Chabon";
+          user.email = profile._json.email || profile.username;
           user.image = profile._json.avatar_url;
           user.save(function(err) {
             if(err) { 

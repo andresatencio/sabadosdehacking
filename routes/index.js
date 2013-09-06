@@ -80,23 +80,16 @@ exports.eliminarTema = function (req, res){
 	console.log("req.params.email: " + req.params.email )
 	console.log("req.user.email: " + req.user.email )
 
-	if (req.params.email == req.user.email){
-
-		if (req.body.email == req.user.email){
-			Tema.findByIdAndUpdate(
-				id,
+			Tema.findOneAndUpdate(
+				{_id: id, email: req.user.email},
 					{activo: false},
 						function (err, doc){
-							console.log(doc);
-							res.send(doc)
+							if(doc){
+								res.send(doc)
+							} else {
+								res.send(404)
+							}
 			});
-		} else {
-			res.send(404);
-		}
-
-	} else {
-		res.send(404);
-	}
 };
 
 var validar = function(txt){
@@ -106,7 +99,7 @@ var validar = function(txt){
     } else if (txt.length > 87){
         return false;
     } else {
-        var expReg = /^[\w ]+$/;
+        var expReg = /^[\w \,\.\-\!\?\=\*\"]+$/;
         return expReg.test(txt);
     }
 }
