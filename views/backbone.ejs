@@ -1,72 +1,80 @@
 <html>
 <head>
 	<title>Backbone</title>
-</head>
-<body>
 	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script type="text/javascript" src="js/underscore-min.js"></script>
 	<script type="text/javascript" src="js/backbone-min.js"></script>
 	<script type="text/javascript" src="js/mustache.js"></script>
-	<div id="area">
-	<label for="alto">Alto</label>
-	<input id="alto" name="alto" value="">
- 
-	<label for="ancho">Ancho</label>
-	<input id="ancho" name="ancho" value="">
- 
-	<div id="resultado" style="margin-top: 2em"></div>
-</div>
-<script type="text/javascript">
-	var Rectangulo = Backbone.Model.extend({
-	defaults: {
-		alto: 4,
-		ancho: 3,
-	},
-	area: function() {
-		return this.get('alto') * this.get('ancho');
-	},
-	toTemplateJSON: function() {
-		var json = this.toJSON();
-		json.area = this.area();
-		return json;
-	}
-});
+	<style>
+		body{
+			font-family: Arial;
+			background-color: #212121;
+			color: #FFFFFF;
+		}
+	</style>
 
-var Vista = Backbone.View.extend({
-	el: '#area',
-	events: {
-		"change input[name='alto']": 'onChangeAlto',
-		"change input[name='ancho']": 'onChangeAncho'
-	},
- 
-	initialize: function() {
-		_.bindAll(this, 'render', 'onChangeAlto', 'onChangeAncho');
-			
-		this.model = new Rectangulo();			
-		this.model.on('change', this.render);
- 
-		this.render();
-	},
- 
-	onChangeAlto: function() {
-		var v = parseInt($("input[name='alto']", this.el).val());
-		this.model.set('alto', v);
-	},
- 
-	onChangeAncho: function() {
-		var v = parseInt($("input[name='ancho']", this.el).val());
-		this.model.set('ancho', v);
-	},
- 
-	render: function() {
-		$("input[name='alto']", this.el).val(this.model.get('alto'));
-		$("input[name='ancho']", this.el).val(this.model.get('ancho'));
- 
-		var texto = Mustache.render('El área de un rectángulo de alto {{alto}} y ancho {{ancho}} es <b>{{area}}</b>', this.model.toTemplateJSON());
-		$('#resultado', this.el).html(texto);
-	},
-});
-var v = new Vista();
-</script>
+</head>
+<body>
+	<div>
+		<h1>BackboneJS</h1>
+		<table>
+			<tr>
+				<td>Nombre:</td>
+				<td><input type="text" name="nombre"></td>
+			</tr>
+			<tr>
+				<td>Edad:</td>
+				<td><input type="text" name="edad"></td>
+			</tr>
+			<tr>
+				<td>Empleado:</td>
+				<td><input type="checkbox" name="empleado"></td>
+			</tr>
+		</table>
+		
+		<button id="add">Agregar</button>
+		<div>
+		<table class="users-table">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Age</th>
+					<th>Employed</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody></tbody>
+		</table>
+	</div>
+	<div class="templates" style="visibility:hidden;">
+		<table>
+			<tbody data-template-name="user-row">
+				<tr data-user-id="{{id}}">
+					<td>{{nombre}}</td>
+					<td>{{edad}}</td>
+					<td>{{empleado}}</td>
+					<td><button class="delete">Delete</button></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+		<table>
+			<tr>
+				<td>Nombre:</td>
+				<td><span class="nombre"></span></td>
+			</tr>
+			<tr>
+				<td>Edad:</td>
+				<td><span class="edad"></span></td>
+			</tr>
+			<tr>
+				<td>Empleado:</td>
+				<td><span class="empleado"></span></td>
+			</tr>
+		</table>
+
+	</div>
+	<script type="text/javascript" src="js/core.js"></script>
 </body>
 </html>
