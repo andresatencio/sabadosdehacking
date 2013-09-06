@@ -9,7 +9,7 @@ var express = require('express')
   , user = require('./routes/user')
   , http = require('http')
   , path = require('path')
-  , passport = require('./routes/passport')('heroku');
+  , passport = require('./routes/passport')('local');
 
 var app = express();
 
@@ -33,11 +33,7 @@ app.configure('development', function(){
   app.use(express.errorHandler());
 });
 
-app.get('/:email',function (req, res){
-  if(req.params.email.length < 5){
-    res.render('backbone');
-  }
-}, routes.patova, routes.portada);
+app.get('/:email', routes.patova, routes.portada);
 app.get('/', routes.index);
 app.get('/:email/logout', routes.patova, routes.logout);
 
