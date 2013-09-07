@@ -35,8 +35,12 @@ exports.patova = function (req, res, next) {
 };
 
 exports.portada = function (req, res){
+	if(req.user.email != req.params.email){
+		res.redirect('/' + req.user.email)
+	} else {
 	res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
 	res.render('user', req.user);
+	}
 };
 
 exports.nuevoTema = function (req, res){
