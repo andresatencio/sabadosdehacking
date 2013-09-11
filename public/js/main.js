@@ -56,7 +56,7 @@ $(document).ready(function(){
                 $('#propone').modal('hide');
                 $("#tema").val("");
                 console.log('ok nuevo tema');
-                $(".list-group").append( "<li class='list-group-item' data-idtema='"+ data._id +"'> <span class='label label-warning'>"+ data.autor +"</span>&nbsp"+ data.descripcion +" <div class='pull-right'><a class='eliminar btn btn-default btn-xs' data-idtema='"+ data._id +"'>eliminar</a></div> </li>" );
+                $(".list-group").prepend( "<li class='list-group-item' data-idtema='"+ data._id +"'> <span class='label label-warning'>"+ data.autor +"</span>&nbsp"+ data.descripcion +" <div class='pull-right'><a class='eliminar btn btn-default btn-xs' data-idtema='"+ data._id +"'>eliminar</a></div> </li>" );
                 var elemento = $("a[data-idtema="+data._id+"]");
                 elemento.click(function() {
 
