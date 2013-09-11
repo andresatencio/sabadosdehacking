@@ -74,7 +74,7 @@ exports.temas = function (req, res){
 	 	if (err){
 	 		res.send(500)
 	 	} else {
-	 		res.json(doc)
+	 		res.json(doc.reverse());
 	 	}
 	 })
 };
