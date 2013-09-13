@@ -107,7 +107,7 @@ var validar = function(txt){
     } else if (txt.length > 87){
         return false;
     } else {
-        var expReg = /^[\w \,\.\-\!\?\=\*\"]+$/;
+        var expReg = /^[\w \,\.\-\!\?\=\*\"\ñ]+$/;
         return expReg.test(txt);
     }
 }
